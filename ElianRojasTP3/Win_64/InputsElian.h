@@ -18,6 +18,16 @@ void menu(void);
  \return void**/
 void menuModificacion(void);
 
+/**\brief Imprime un menu de opciones para el orden de los empleados
+ * \param
+ \return void**/
+int menuOrden(void);
+
+/**\brief Imprime un menu de opciones para el orden de los empleados
+ * \param
+ \return void**/
+int menuCriterio (void);
+
 /** \brief Solicita un texto al usuario , valida que sea solo letras y espacios, vuelve la primer letra Mayuscula y el resto minuscula despues de cada espacio
  * elimina saltos de linea
  * \param var_dondeAsignar es donde se guarda el valor

@@ -18,11 +18,9 @@
  -   9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
  -   10. Salir
 *****************************************************/
+
 #define ARCHIVOT "data.csv"
 #define ARCHIVOB "data.csv"
-
-//notitas
-//case 7 no terminado poner limpiar(),continuar(), comentar todo
 
 int main()
 {
@@ -36,6 +34,8 @@ int main()
 
     do
     {
+        limpiar();
+
         menu();
 
         f_i_PedirIntEntre(&option,1,10,"");
@@ -44,6 +44,8 @@ int main()
         {
         //Cargar Texto
         case 1:
+            limpiar();
+
             if (chargedText == 1 || chargedBinary == 1)
             {
                 printf("Los datos ya fueron cargados\n");
@@ -67,10 +69,13 @@ int main()
                     printf("Error en la lista\n");
                 }
             }
+
+            f_i_continuar();
             break;
 
         //Cargar Binario
         case 2:
+            limpiar();
 
             if (chargedText == 1 || chargedBinary == 1)
             {
@@ -95,10 +100,14 @@ int main()
                     printf("Error en la lista\n");
                 }
             }
+
+            f_i_continuar();
             break;
 
         //Nuevo empleado
         case 3:
+            limpiar();
+
             if (chargedText == 0 && chargedBinary == 0)
             {
                 printf("Primero se deben cargar los datos.\n");
@@ -115,10 +124,13 @@ int main()
                     printf("No se cargo el empleado\n");
                 }
             }
+
+            f_i_continuar();
             break;
 
         //Modificar empleado
         case 4:
+            limpiar();
 
             if (chargedText == 0 && chargedBinary == 0)
             {
@@ -137,10 +149,13 @@ int main()
                 }
             }
 
+            f_i_continuar();
             break;
 
         //Baja empleado
         case 5:
+            limpiar();
+
             if (chargedText == 0 && chargedBinary == 0)
             {
                 printf("Primero se deben cargar los datos.\n");
@@ -154,27 +169,37 @@ int main()
                 }
                 else
                 {
-                    printf("No pudo darse de baja el empleado\n");
+                    printf("No se dio baja el empleado\n");
                 }
             }
+
+            f_i_continuar();
             break;
 
         //Listar todos
         case 6:
+            limpiar();
+
             if (chargedText == 0 && chargedBinary == 0)
             {
                 printf("Primero se deben cargar los datos.\n");
             }
             else
             {
+
                 if (controller_ListEmployee(listaEmpleados) == 0)
                 {
                     printf("No hay ningun empleado que mostrar.\n ");
                 };
             }
+
+            f_i_continuar();
             break;
 
-        case 7: // no funcionap
+        //Ordenar
+        case 7:
+            limpiar();
+
             if (chargedText == 0 && chargedBinary == 0)
             {
                 printf("Primero se deben cargar los datos.\n");
@@ -184,16 +209,21 @@ int main()
                 if(controller_sortEmployee(listaEmpleados) != 0)
                 {
                     printf("Se ordenaron los empleados\n");
+                    saved = 0;
                 }
                 else
                 {
-                    printf("No se pudo ordenar los empleados\n");
+                    printf("No se ordenaron los empleados\n");
                 }
             }
+
+            f_i_continuar();
             break;
 
         //Guardar modo texto
         case 8:
+            limpiar();
+
             if (chargedText == 0 && chargedBinary == 0)
             {
                 printf("Primero se deben cargar los datos.\n");
@@ -210,10 +240,14 @@ int main()
                     saved = 1;
                 }
             }
+
+            f_i_continuar();
             break;
 
         //Guardar modo binario
         case 9:
+            limpiar();
+
             if (chargedText == 0 && chargedBinary == 0)
             {
                 printf("Primero se deben cargar los datos.\n");
@@ -230,21 +264,29 @@ int main()
                     saved = 1;
                 }
             }
+
+            f_i_continuar();
             break;
 
         case 10:
+            limpiar();
+
             if (saved == 0)
             {
                 if(f_i_SioNo("Hay datos sin guardar , salir de todas formas?") == 0)
                 {
                     option = 0;
                 }
+                else
+                {
+                    ll_deleteLinkedList(listaEmpleados);
+                }
             }
-            ll_deleteLinkedList(listaEmpleados);
+
             break;
 
         default:
-            printf("oops");
+            printf(":-)");
             break;
         }
     }

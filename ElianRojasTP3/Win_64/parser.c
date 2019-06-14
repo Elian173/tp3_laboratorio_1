@@ -4,11 +4,6 @@
 #include "LinkedList.h"
 #include "Employee.h"
 
-/** \brief Parsea los datos de los empleados desde el archivo data.csv (modo texto).
- * \param pFile FILE*
- * \param pArrayListEmployee LinkedList*
- * \return 1 se leyo bien , 0 se leyo mal ,
- */
 int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee)
 {
     char auxId[31],auxNombre[31],auxHoras[31],auxSueldo[31];
@@ -58,7 +53,7 @@ int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee)
     }
     else
     {
-        printf("\nError archivo vacio\n");
+        printf("Archivo vacio\n");
         retorno = 0;
     }
 
@@ -66,11 +61,7 @@ int parser_EmployeeFromText(FILE *pFile, LinkedList *pArrayListEmployee)
 
 }
 
-/** \brief Parsea los datos de los empleados desde el archivo data.csv (modo binario).
- * \param pFile FILE*
- * \param pArrayListEmployee LinkedList*
- * \return 1 si leyo bien , 0 si leyo mal
- */
+
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int retorno = 1;
@@ -97,7 +88,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
     }
     else
     {
-        printf("El archivo esta vacio\n");
+        printf("Archivo vacio\n");
         retorno = 0 ;
     }
 

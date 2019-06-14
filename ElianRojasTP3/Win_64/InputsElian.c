@@ -67,6 +67,42 @@ void menuModificacion(void)
 
     return;
 }
+
+int menuOrden(void)
+{
+    int opc;
+
+    printf(
+        "/**************************************************** \n"
+        "1.Ordenar empleados por nombre.\n"
+        "2.Ordenar empleados por id\n"
+        "3.Ordenar empleados por sueldo\n"
+        "4 Ordenar empleados por horas trabajadas.\n"
+        "5. Cancelar\n"
+        "*****************************************************/\n");
+
+    f_i_PedirIntEntre(&opc,1,5,"Opcion:");
+    return opc;
+}
+
+int menuCriterio (void)
+{
+    int opc;
+
+    printf("/**************************************************** \n"
+           "1.Ordenar de manera descendente.\n"
+           "2.Ordenar de manera ascendente.\n");
+
+    f_i_PedirIntEntre(&opc,1,2,"Opcion:");
+
+    if(opc == 2)
+    {
+        opc = 0;
+    }
+
+    return opc;
+}
+
 void f_i_PedirNombre(char var_dondeAsignar[],int longitudMaxString, char mensaje[])
 {
     int i;

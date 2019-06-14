@@ -79,10 +79,21 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
     if(pArrayListEmployee != NULL && ptr_AuxNuevoEmpleado != NULL)
     {
-        //guardo los datos de el empleado
+        //Genero un id que vale 1 mas que el mas grande asi no se repite
+
+        //ordeno por id para que el id mas grande quede a lo ultimo
+        ll_sort(pArrayListEmployee,empleado_ordenarPorId,0);
+
+        //tomo el ultimo empleado , que tiene el id mas grande
         ptr_UltimoEmpleado = ll_get(pArrayListEmployee,ll_len(pArrayListEmployee)-1);
-        lastId = ptr_UltimoEmpleado->id;
+
+        //agarro su id
+        employee_getId(ptr_UltimoEmpleado,&lastId);
+
+        //le sumo 1 a ese id y se lo asigno al nuevo empleado
         employee_setId(ptr_AuxNuevoEmpleado,lastId + 1);
+
+        // pido los demas datos
 
         f_i_PedirNombre(buffer,31,"Ingrese el nombre del empleado");
         employee_setNombre(ptr_AuxNuevoEmpleado, buffer);
@@ -153,6 +164,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         if ( indexAModificar != -1 )
         {
             limpiar();
+            printf("Id:           Nombre:   Horas:   Sueldo:\n");
+            empleado_imprimir(ptr_EmpleadoAModificar);
             menuModificacion();
             f_i_PedirIntEntre(&opcion,1,4,"");
             switch (opcion)
@@ -242,8 +255,15 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
         if ( indexARemover != -1 )
         {
-            ll_remove(pArrayListEmployee,i);
-            retorno = 1;
+            printf("Id:          Nombre:   Horas:   Sueldo:\n");
+            empleado_imprimir(aux_Empleado);
+
+            if(f_i_SioNo("\nEliminar este empleado?"))
+            {
+                ll_remove(pArrayListEmployee,i);
+                retorno = 1;
+            }
+
         }
 
     }
@@ -263,14 +283,14 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  *
  * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return 0 si no lista , 1 si lista
  *
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
 
-    int total = 0;
     Employee *ptr_Empleado;
+    int retorno = 0 ;
     int i;
 
     ptr_Empleado = employee_new();
@@ -284,15 +304,15 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
             if(ptr_Empleado != NULL && ptr_Empleado->id != -1)
             {
                 empleado_imprimir(ptr_Empleado);
-                total++;
             }
         }
+        retorno = 1;
     }
     else
     {
         printf("La lista esta vacia.\n");
     }
-    return total;
+    return retorno;
 }
 
 /** \brief Ordenar empleados
@@ -305,11 +325,38 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno = 0;
-
+    int opcion;
+    int criterio;
     if(pArrayListEmployee != NULL)
     {
-    ll_sort(pArrayListEmployee,empleado_ordenar,0);
-    retorno = 1;
+        opcion = menuOrden();
+
+        switch (opcion)
+        {
+        case 1 :
+            criterio = menuCriterio();
+            ll_sort(pArrayListEmployee,empleado_ordenarNombre,criterio);
+            retorno = 1;
+            break;
+        case 2 :
+            criterio = menuCriterio();
+            ll_sort(pArrayListEmployee,empleado_ordenarPorId,criterio);
+            retorno = 1;
+            break;
+        case 3 :
+            criterio = menuCriterio();
+            ll_sort(pArrayListEmployee,empleado_ordenarPorSueldo,criterio);
+            retorno = 1;
+            break;
+        case 4 :
+            criterio = menuCriterio();
+            ll_sort(pArrayListEmployee,empleado_ordenarPorHoras,criterio);
+            retorno = 1;
+            break;
+        case 5:
+            retorno = 0;
+            break;
+        }
     }
     return retorno;
 
@@ -344,13 +391,12 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
         for(index = 0; index < size; index++)
         {
             ptr_AuxEmpleado = (Employee*) ll_get(pArrayListEmployee, index);
-            fprintf(pFile, "%d, %s, %d, %d\n",ptr_AuxEmpleado->id, ptr_AuxEmpleado->nombre, ptr_AuxEmpleado->horasTrabajadas, ptr_AuxEmpleado->sueldo);
+            fprintf(pFile,"%d,%s,%d,%d\n",ptr_AuxEmpleado->id, ptr_AuxEmpleado->nombre, ptr_AuxEmpleado->horasTrabajadas, ptr_AuxEmpleado->sueldo);
         }
 
     }
     else
     {
-        //error
         retorno = 0;
     }
 
@@ -364,7 +410,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
  *
  * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return 0 guardo mal , 1 guardo bien
  *
  */
 

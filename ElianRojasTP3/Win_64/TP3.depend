@@ -119,3 +119,115 @@
 
 1560330282 e:\elian rojas tp 3\win_64\inputselian.h
 
+1560503981 source:c:\users\elian\desktop\elianrojastp3\win_64\inputselian.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	<unistd.h>
+	<windows.h>
+
+1560503938 source:c:\users\elian\desktop\elianrojastp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560498655 c:\users\elian\desktop\elianrojastp3\win_64\linkedlist.h
+
+1560503981 c:\users\elian\desktop\elianrojastp3\win_64\employee.h
+
+1560503981 source:c:\users\elian\desktop\elianrojastp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"InputsElian.h"
+	"string.h"
+
+1560500990 c:\users\elian\desktop\elianrojastp3\win_64\controller.h
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560500990 c:\users\elian\desktop\elianrojastp3\win_64\parser.h
+
+1560496487 c:\users\elian\desktop\elianrojastp3\win_64\inputselian.h
+
+1560499812 source:c:\users\elian\desktop\elianrojastp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1560503750 source:c:\users\elian\desktop\elianrojastp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"InputsElian.h"
+
+1560503981 source:c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"InputsElian.h"
+	"string.h"
+
+1560500990 c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\controller.h
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560498655 c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\linkedlist.h
+
+1560503981 c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\employee.h
+
+1560500990 c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\parser.h
+
+1560496487 c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\inputselian.h
+
+1560499812 source:c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1560503981 source:c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\inputselian.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	<unistd.h>
+	<windows.h>
+
+1560503750 source:c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"InputsElian.h"
+
+1560503938 source:c:\users\elian\desktop\tp3_laboratorio_1\elianrojastp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+
